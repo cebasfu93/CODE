@@ -95,4 +95,24 @@ def emcee_code_function(propiedades, mic, semilla):
     fig = corner.corner(samples, labels = labels_alfas, quantiles = [0.16, 0.5, 0.84])
     fig.savefig("triangle.png",dpi=200)
 
+    chi2 = np.zeros(nsteps)
+
+    for i in range(nsteps):
+        params = samples_fc[i,:]
+        chi2[i] = -2.0*lnprob(params, propiedades, mic)
+
+    import matplotlib.pyplot as plt
+
+    plt.figure()
+    plt.plot(chi2)
+    plt.xlabel('step')
+    plt.ylabel('$\chi^2$')
+    plt.savefig('chi_squared.png')
+
+    plt.figure()
+    plt.plot(np.log(chi2))
+    plt.xlabel('step')
+    plt.ylabel('$\log{\chi^2}$')
+    plt.savefig('chi_squared_log.png')
+
     return parametros_emcee
