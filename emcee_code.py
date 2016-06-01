@@ -3,26 +3,39 @@ import numpy as np, emcee, os, corner
 #FUNCTIONS
 
 def modelo(propiedades, parametros):
-    
-    num_filas = len(propiedades[:,0])
-    
-    resultado = np.zeros(num_filas)
-    
-    for i in range(num_filas):
-        resultado[i] = sum(parametros*propiedades[i,:])
-        
-    return resultado
-    
 
-def lnprob(parametros, propiedades, mic):   
-    
+    num_filas = len(propiedades[:,0])
+    num_parametros = len(parametros)
+
+    resultado = np.zeros(num_filas)
+
+    for i in range(num_filas):
+
+    	suma = 0
+
+    	for j in range(num_parametros):
+
+    		coeficiente = parametros[j]
+    		propiedad = propiedades[i,j]
+
+        	suma += coeficiente*propiedad
+
+        resultado[i] = suma
+
+    return resultado
+
+
+def lnprob(parametros, propiedades, mic):
+
+    #coeficientes
     for par in parametros:
-	if(par < -100.0 or par > 100.0):
-	    return -np.inf
+    	if(par < -100.0 or par > 100.0):
+	    	return -np.inf
 
     code = modelo(propiedades, parametros)
+
     chi_squared = np.sum((code-mic)**2)
-    
+
     return -0.5*chi_squared
 
 #emcee
@@ -30,15 +43,15 @@ def emcee_code_function(propiedades, mic, semilla):
 
     #Semilla
     np.random.seed(semilla)
-    
+
     #Valores iniciales
     num_parametros = len(propiedades[0,:])
-    parametros = np.random.uniform(-100,100, num_parametros)
+    parametros = np.random.uniform(-10,10, num_parametros)
 
     #Running emcee
     ndim = num_parametros
     nwalkers = num_parametros*2
-    nsteps = 10000*num_parametros
+    nsteps = 4000*num_parametros
 
     pos = [parametros+ 1e-3*np.random.randn(ndim) for i in range(nwalkers)]
 
@@ -68,16 +81,16 @@ def emcee_code_function(propiedades, mic, semilla):
         fila = parametros_caminata[i,:]
         parametros_emcee[i] = np.percentile(fila, [16, 50, 84])
 
-    labels_alfas = []        
-        
+    labels_alfas = []
+
     # Prints them
     print('Parameter = [16 50 84]')
-    
+
     for i in range(num_parametros):
         alfa_i = 'alfa'+str(i+1)
         labels_alfas.append(alfa_i)
         print(alfa_i+' = ', parametros_emcee[i])
-        
+
 
     fig = corner.corner(samples, labels = labels_alfas, quantiles = [0.16, 0.5, 0.84])
     fig.savefig("triangle.png",dpi=200)
