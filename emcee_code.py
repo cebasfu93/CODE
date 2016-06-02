@@ -39,7 +39,7 @@ def lnprob(parametros, propiedades, mic):
     return -0.5*chi_squared
 
 #emcee
-def emcee_code_function(propiedades, mic, semilla):
+def emcee_code_function(propiedades, mic, semilla, directory):
 
     #Semilla
     np.random.seed(semilla)
@@ -51,8 +51,8 @@ def emcee_code_function(propiedades, mic, semilla):
     #Running emcee
     ndim = num_parametros
     nwalkers = num_parametros*2
-    nsteps = 4000*num_parametros
-
+    #nsteps = 4000*num_parametros
+    nsteps = 1000
     pos = [parametros+ 1e-3*np.random.randn(ndim) for i in range(nwalkers)]
 
     sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(propiedades, mic), threads=8)
@@ -93,7 +93,7 @@ def emcee_code_function(propiedades, mic, semilla):
 
 
     fig = corner.corner(samples, labels = labels_alfas, quantiles = [0.16, 0.5, 0.84])
-    fig.savefig("triangle.png",dpi=200)
+    fig.savefig(directory + "/triangle.png",dpi=200)
 
     chi2 = np.zeros(nsteps)
 
@@ -107,12 +107,12 @@ def emcee_code_function(propiedades, mic, semilla):
     plt.plot(chi2)
     plt.xlabel('step')
     plt.ylabel('$\chi^2$')
-    plt.savefig('chi_squared.png')
+    plt.savefig(directory + '/chi_squared.png')
 
     plt.figure()
     plt.plot(np.log(chi2))
     plt.xlabel('step')
     plt.ylabel('$\log{\chi^2}$')
-    plt.savefig('chi_squared_log.png')
+    plt.savefig(directory + '/chi_squared_log.png')
 
     return parametros_emcee
