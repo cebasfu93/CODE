@@ -87,7 +87,7 @@ def emcee_code_function(propiedades, mic, semilla, directory):
     print('Parameter = [16 50 84]')
 
     for i in range(num_parametros):
-        alfa_i = 'alfa'+str(i+1)
+        alfa_i = 'param'+str(i+1)
         labels_alfas.append(alfa_i)
         print(alfa_i+' = ', parametros_emcee[i])
 
@@ -107,12 +107,18 @@ def emcee_code_function(propiedades, mic, semilla, directory):
     plt.plot(chi2)
     plt.xlabel('step')
     plt.ylabel('$\chi^2$')
+    plt.grid()
+    #plt.legend(fancybox=True, loc=2).get_frame().set_alpha(0.5)
+    plt.title("$\chi^2$ as a function of the iteration step for one walker")
     plt.savefig(directory + '/chi_squared.png')
 
     plt.figure()
     plt.plot(np.log(chi2))
     plt.xlabel('step')
     plt.ylabel('$\log{\chi^2}$')
+    plt.grid()
+    #plt.legend(fancybox=True, loc=2).get_frame().set_alpha(0.5)
+    plt.title("$\log{\chi^2}$ as a function of the iteration step for one walker")
     plt.savefig(directory + '/chi_squared_log.png')
 
     return parametros_emcee
