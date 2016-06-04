@@ -1,0 +1,38 @@
+Job name: Test
+ Starting time: Fri Jun  3 19:09:44 2016
+ Input file: Input.csv
+ Number of parameters: 3
+ Number of molecules in the Training Set: 105
+ Number of molecules in the Test Set: 40
+ Total molecules imported: 145
+ Random seed: 1
+ Boolean activity set to column: 2 (starting from 0)
+ Numeric activity value taken from column: 3
+ Calculated activity values writen in column: 7
+ Finish time: Fri Jun  3 19:11:38 2016
+ Running time (s): 113.663956165
+ 
+ 
+ For the Monte Carlo (MC) calculation: 
+ 
+ The best parameters found were: [ 5.96451308  5.68907206 -2.4850984 ]
+ Saved figure Test/triangle.png contains the corner graphs of the MC run
+ Saved figure Test/chi_squared.png contains the value of $chi^2$ as a function of the iteration step for one walker
+ Saved figure Test/chi_squared_log.png contains the value of $log{chi^2}$ as a function of the iteration step for one walker
+ 
+ 
+ For the Training Set: 
+ 
+ The fitting line between experimental and predicted activity had an r^2 of: 6.20923798541e-05
+ The equation of this line is: PREDICT = -0.00141879527393*EXPERIMENT + 4.12759647009
+ Saved figure Test/ActTrainSet.png contains the fitting of the predicted activity to the experimental one using an MC method for the Training Set
+ Saved figure Test/ActTrainSetPredExp.png contains the predicted activities as a function of the experimental ones for the Training Set
+ 
+ 
+ For the Test Set: 
+ 
+ The fitting line between experimental and predicted activity had an r^2 of: 0.0157220843891
+ The equation of this line is: PREDICT = 0.0478210382663*EXPERIMENT + 4.97126555071
+ Saved figure Test/ActTestSet.png contains the fitting of the predicted activity to the experimental one using an MC method for the Test Set
+ Saved figure Test/ActTestSetPredExp.png contains the predicted activities as a function of the experimental ones for the Test Set
+ Saved figure Test/EnrichmentCurveCODE.png contains the enrichment curve of the complete set of molecules when the compounds are sorted according to the CODE function value
