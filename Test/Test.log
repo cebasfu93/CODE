@@ -1,21 +1,19 @@
 Job name: Test
- Starting time: Sat Jun  4 15:38:47 2016
- Input file: Input.csv
+ Starting time: Tue Jun  7 12:08:31 2016
+ Input file: Input2.csv
  Number of parameters: 3
  Number of molecules in the Training Set: 105
  Number of molecules in the Test Set: 40
  Total molecules imported: 145
  Random seed: 1
- Boolean activity set to column: 2 (starting from 0)
- Numeric activity value taken from column: 3
- Calculated activity values writen in column: 7
- Finish time: Sat Jun  4 15:40:50 2016
- Running time (s): 122.660856962
+ Numeric activity value taken from column: 1
+ Finish time: Tue Jun  7 12:28:00 2016
+ Running time (s): 1172.32646108
  
  
  For the Monte Carlo (MC) calculation: 
  
- The best parameters found were: [ 5.93783894  5.72971552 -2.51329342]
+ The best parameters found were: [ 6.09052067  5.70150083 -2.64347008]
  Saved figure Test/triangle.png contains the corner graphs of the MC run
  Saved figure Test/chi_squared.png contains the value of $chi^2$ as a function of the iteration step for one walker
  Saved figure Test/chi_squared_log.png contains the value of $log{chi^2}$ as a function of the iteration step for one walker
@@ -23,16 +21,16 @@ Job name: Test
  
  For the Training Set: 
  
- The fitting line between experimental and predicted activity had an r^2 of: 6.31327495481e-05
- The equation of this line is: PREDICT = -0.00142949174309*EXPERIMENT + 4.12579882333
+ The fitting line between experimental and predicted activity had an r^2 of: 1.01405037627e-05
+ The equation of this line is: PREDICT = -0.000581915458258*EXPERIMENT + 4.07981096463
  Saved figure Test/ActTrainSet.png contains the fitting of the predicted activity to the experimental one using an MC method for the Training Set
  Saved figure Test/ActTrainSetPredExp.png contains the predicted activities as a function of the experimental ones for the Training Set
  
  
  For the Test Set: 
  
- The fitting line between experimental and predicted activity had an r^2 of: 0.0159356682864
- The equation of this line is: PREDICT = 0.0480815010689*EXPERIMENT + 4.96548619724
+ The fitting line between experimental and predicted activity had an r^2 of: 0.0178159874513
+ The equation of this line is: PREDICT = 0.0519416700722*EXPERIMENT + 4.93479702656
  Saved figure Test/ActTestSet.png contains the fitting of the predicted activity to the experimental one using an MC method for the Test Set
  Saved figure Test/ActTestSetPredExp.png contains the predicted activities as a function of the experimental ones for the Test Set
  Saved figure Test/EnrichmentCurveCODE.png contains the enrichment curve of the complete set of molecules when the compounds are sorted according to the CODE function value

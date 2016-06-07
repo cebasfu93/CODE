@@ -51,8 +51,8 @@ def emcee_code_function(propiedades, mic, semilla, directory):
     #Running emcee
     ndim = num_parametros
     nwalkers = num_parametros*2
-    nsteps = 4000*num_parametros
-    #nsteps = 1000
+    #nsteps = 4000*num_parametros
+    nsteps = 1000
     pos = [parametros+ 1e-3*np.random.randn(ndim) for i in range(nwalkers)]
 
     sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(propiedades, mic), threads=8)
